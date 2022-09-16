@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
+    <style>
+        fieldset {
+
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+
+
+            margin-top: 10px;
+            border-radius: 20px;
+            background-image: linear-gradient(red, yellow, green);
+
+
+        }
+
+        legend {
+            margin-top: 30px;
+            font-size: 30px;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 20px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 20px;
+            background-color: black;
+            color: whitesmoke;
+            padding: 10px;
+        }
+
+        input {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        button {
+            display: inline-block;
+            width: 50%;
+            background-image: linear-gradient(red, yellow, green);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+
+        ::placeholder {
+            color: red;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <fieldset>
+        <legend> ÜYE GİRİŞİ</legend><br>
+        <label for="isim">KullanıcıAdi</label> <br>
+        <input type="text" id="isim"><br>
+        <label for="eposta">Eposta</label><br>
+        <input type="text" id="eposta"><br>
+        <label for="parolo">Paralo</label><br>
+        <input type="password" id="parolo"><br>
+        <label for="parolo2">Parolo2</label><br>
+        <input type="password" id="parolo2"><br>
+        <button id="giris">GİRİŞ YAP</button>
+    </fieldset>
+
+
+    <script>
+
+
+        document.getElementById('giris').onclick = function () {
+
+            i=0;
+
+            if (document.getElementById('isim').value == "") {
+                document.getElementById('isim').placeholder = "isim boş bırakılamaz!"
+                i++;
+            }
+
+            if (document.getElementById('eposta').value == "") {
+                document.getElementById('eposta').placeholder = "mail boş bırıkalamaz!"
+                i++;
+            }
+
+            if (document.getElementById('parolo').value == "") {
+                document.getElementById('parolo').placeholder = "parola boş bırakılamaz!"
+                i++;
+            }
+
+            if (document.getElementById('parolo2').value == "") {
+                document.getElementById('parolo2').placeholder = "parolo2 boş bırakılamaz!"
+                i++;
+            }
+
+            let a = document.getElementById('isim').value
+            if (a.length < 6) {
+                document.getElementById('isim').value = "";
+                document.getElementById('isim').placeholder = "kelime sayısı kısa";
+                i++;
+
+            }
+            function validateEmail(email) {
+                let res = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return res.test(email);
+            }
+
+            if(validateEmail($('#eposta').val())==false)
+            {
+               
+           
+                alert('olması gereken mail değil');
+                i++;
+               
+                
+            }
+
+            if(document.getElementById('parolo').value!=document.getElementById('parolo2').value)
+            {
+                alert("⚠️"+'parorlar eşlemişiyorr');
+                i++;
+            }
+
+            if(i==0)
+            {
+                alert('giriş başarılı')
+            }
+
+            else
+            {
+                alert('giriş başarılı değil');
+            }
+
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
